@@ -1,0 +1,21 @@
+/*
+Theme Name: Absolute Zero
+Theme URI: https://azrobotics.org/
+Author: Absolute Zero Robotics, FTC Team 12096
+Author URI: https://azrobotics.org/
+Description: Custom theme for Absolute Zero, FIRST Tech Challenge Team 12096. Dark, single-typeface (Days One), with a centred floating snowflake navigation island. Content is driven by custom post types for workshops, roster, sponsors, programmes and the Open Access library, so the team can maintain the site without touching a template.
+Version: 1.0.0
+Requires at least: 6.4
+Tested up to: 6.7
+Requires PHP: 8.0
+License: GPL-2.0-or-later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: absolute-zero
+Tags: dark, custom-colors, custom-menu, custom-logo, one-column, accessibility-ready
+*/
+
+/*
+  This file exists because WordPress requires it. The theme's real
+  stylesheet is assets/css/site.css, enqueued in inc/enqueue.php.
+  Do not add rules here; they would load out of order with the tokens.
+*/

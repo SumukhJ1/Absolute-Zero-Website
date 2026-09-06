@@ -1,0 +1,84 @@
+<section class="band band--open-top">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="{{HOME}}/">Home</a></li><li><span aria-current="page">Our Team</span></li></ol></nav>
+    <div class="page-head">
+      <h1>Our team</h1>
+      <p class="lede">
+        15 students, two coaches and two mentors. Everybody on this page does at least two jobs, because a team this size has no room for specialists who only specialise.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== STUDENTS ========================== -->
+<section class="band band--tight">
+  <div class="wrap">
+    <div class="roster-head">
+      <h2>Students</h2>
+      <div class="filter-bar">
+      <div class="segmented" role="tablist" aria-label="Filter the roster by role"
+           data-filter-group="role" data-filter-target="#roster">
+        <button class="segmented__btn" type="button" role="tab" data-value="all" aria-selected="true" tabindex="0">Everyone</button><button class="segmented__btn" type="button" role="tab" data-value="build" aria-selected="false" tabindex="-1">Build</button><button class="segmented__btn" type="button" role="tab" data-value="program" aria-selected="false" tabindex="-1">Programming</button><button class="segmented__btn" type="button" role="tab" data-value="outreach" aria-selected="false" tabindex="-1">Outreach</button><button class="segmented__btn" type="button" role="tab" data-value="drive" aria-selected="false" tabindex="-1">Drive team</button>
+        <span class="visually-hidden" role="status" data-filter-live></span>
+      </div>
+    </div>
+    </div>
+
+    {{REGION:roster}}
+
+    <dl class="roster-counts">
+      <div><dt>Build and CAD</dt><dd class="nums">12</dd></div>
+      <div><dt>Programming</dt><dd class="nums">2</dd></div>
+      <div><dt>Outreach</dt><dd class="nums">7</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- =========================== COACHES =========================== -->
+<section class="band band--raised rule-top">
+  <div class="wrap">
+    <div class="head">
+      
+      <h2>Coaches</h2>
+      <p>Both coaches sit on the board of Robotics for Youth, the nonprofit this team is part of. Neither of them drives the robot.</p>
+    </div>
+    {{REGION:coaches}}
+    <p class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>Coach biographies and Coach Dinesh’s portrait are carried over from the old site and need refreshing. Send updated text and a current photo and they drop straight in.</span></p>
+  </div>
+</section>
+
+<!-- =========================== MENTORS =========================== -->
+<section class="band">
+  <div class="wrap">
+    <div class="head">
+      
+      <h2>Mentors</h2>
+      <p>Working engineers who give us their evenings. They review what we design and tell us plainly when it will not survive a match.</p>
+    </div>
+    {{REGION:mentors}}
+  </div>
+</section>
+
+<!-- ============================ JOIN ============================= -->
+<section class="band band--open-bottom rule-top">
+  <div class="wrap">
+    <div class="split split--narrow">
+      <div>
+        <span class="tick" aria-hidden="true"></span>
+        <h2>Joining</h2>
+      </div>
+      <div class="stack">
+        <p>
+          FIRST Tech Challenge is for students in grades 7 to 12. You do not need to have built anything before. Roughly half of this roster had never touched a robot when they joined, and the fastest way onto the drive team has always been to show up on outreach days.
+        </p>
+        <p>
+          If you are in Northern Virginia and want to find out what a season looks like, write to us. If you are somewhere else, we will help you find a team near you or start one.
+        </p>
+        <div class="btn-row" style="margin-top:var(--space-md)">
+          <a class="btn btn--primary" href="{{HOME}}/contact/"><span>Get in touch</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn--ghost" href="{{HOME}}/build-and-program/"><span>What a season looks like</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
