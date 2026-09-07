@@ -36,7 +36,7 @@
     <div class="head">
       
       <h2>The programmes</h2>
-      <p>Nine of them. Some run every term, some once a season, one runs on another continent.</p>
+      <p>8 of them. Some run every term, some once a season, one runs on another continent.</p>
     </div>
 
     {{REGION:programmes}}
@@ -55,15 +55,11 @@
       <div class="filter-bar">
       <div class="segmented" role="tablist" aria-label="Choose a competition season"
            data-filter-group="season" data-filter-target="#ws-list">
-        <button class="segmented__btn" type="button" role="tab" data-value="biobuzz" aria-selected="false" tabindex="-1">BIOBUZZ</button><button class="segmented__btn" type="button" role="tab" data-value="decode" aria-selected="true" tabindex="0">DECODE</button><button class="segmented__btn" type="button" role="tab" data-value="centerstage" aria-selected="false" tabindex="-1">CENTERSTAGE</button><button class="segmented__btn" type="button" role="tab" data-value="earlier" aria-selected="false" tabindex="-1">Earlier</button>
+        <button class="segmented__btn" type="button" role="tab" data-value="biobuzz" aria-selected="false" tabindex="-1">BIOBUZZ  {{OPT:az_season_years}}</button><button class="segmented__btn" type="button" role="tab" data-value="decode" aria-selected="true" tabindex="0">DECODE  2025-2026</button><button class="segmented__btn" type="button" role="tab" data-value="centerstage" aria-selected="false" tabindex="-1">CENTERSTAGE  2023-2024</button><button class="segmented__btn" type="button" role="tab" data-value="earlier" aria-selected="false" tabindex="-1">Earlier  2017-2023</button>
         <span class="visually-hidden" role="status" data-filter-live></span>
       </div>
     </div>
     </div>
-
-    <p class="season-legend meta">
-      <span><strong>BIOBUZZ</strong> {{OPT:az_season_years}}</span><span><strong>DECODE</strong> 2025-2026</span><span><strong>CENTERSTAGE</strong> 2023-2024</span><span><strong>Earlier</strong> 2017-2023</span>
-    </p>
 
     {{REGION:workshops}}
 
@@ -89,8 +85,13 @@
         </div>
       </div>
       <span class="frame frame--photo">
-<!-- PHOTO SLOT: Namma Bhoomi students with a kit, or a screen capture from a remote teaching session. | target 1000x750 | drop file at assets/img/outreach-namma-bhoomi-wide.jpg -->
-<img src="{{URI}}/assets/img/outreach-namma-bhoomi-wide.jpg" alt="Students at Namma Bhoomi working with a robotics kit in the campus computer lab." width="1000" height="750" loading="lazy" decoding="async"></span>
+<!-- PHOTO SLOT: Namma Bhoomi students with a kit, or a screen capture from a remote teaching session. | drop file at assets/img/outreach-namma-bhoomi-wide.jpg -->
+<div class="slot slot--photo slot--asimg"
+       style="--slot-ratio:1000 / 750" role="img" aria-label="Students at Namma Bhoomi working with a robotics kit in the campus computer lab.">
+      <span class="slot__mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 8.5A1.5 1.5 0 0 1 4.5 7h2L8 5h8l1.5 2h2A1.5 1.5 0 0 1 21 8.5v9A1.5 1.5 0 0 1 19.5 19h-15A1.5 1.5 0 0 1 3 17.5Z"/><circle cx="12" cy="13" r="3.2"/></svg></span>
+      <span class="slot__label">Students at Namma Bhoomi working with a robotics kit in the campus computer lab.</span>
+      <span class="slot__hint">Namma Bhoomi students with a kit, or a screen capture from a remote teaching session.</span>
+    </div></span>
     </div>
   </div>
 </section>

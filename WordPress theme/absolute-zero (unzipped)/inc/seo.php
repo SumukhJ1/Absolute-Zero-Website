@@ -131,7 +131,7 @@ function az_schema_org() {
 		'alternateName'      => sprintf( 'Absolute Zero FTC #%s', az_opt( 'az_team_number' ) ),
 		'sport'              => 'Robotics',
 		'url'                => home_url( '/' ),
-		'logo'               => AZ_URI . '/assets/img/icon-512.png',
+		'logo'               => AZ_URI . '/assets/img/logo-absolute-zero.png',
 		'image'              => AZ_URI . '/assets/img/og-default.jpg',
 		'slogan'             => get_bloginfo( 'description' ),
 		'foundingDate'       => az_opt( 'az_founded' ),

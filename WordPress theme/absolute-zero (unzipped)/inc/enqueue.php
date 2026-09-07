@@ -1,6 +1,6 @@
 <?php
 /**
- * One stylesheet, one script, two font files, preloaded.
+ * One stylesheet and one script. No webfonts.
  *
  * @package absolute-zero
  */
@@ -31,16 +31,10 @@ function az_enqueue() {
 	wp_dequeue_script( 'comment-reply' );
 }
 
-/* Days One is self-hosted. Nothing is fetched from a font CDN at page
-   load, which keeps the site fast and keeps visitor IP addresses out of
-   a third party's logs. */
-add_action( 'wp_head', 'az_preload_font', 1 );
-function az_preload_font() {
-	printf(
-		'<link rel="preload" as="font" type="font/woff2" href="%s" crossorigin>' . "\n",
-		esc_url( AZ_URI . '/assets/fonts/days-one-latin-400.woff2' )
-	);
-}
+/* The type stack is Segoe UI with per-platform fallbacks, all of which are
+   already installed on the reader's machine. Nothing is downloaded, so
+   there is no font to preload, no flash of unstyled text, and no visitor
+   IP address handed to a font CDN. */
 
 /* The no-js to js swap has to happen before first paint, or the reveal
    animation's starting state flashes. */

@@ -37,7 +37,7 @@
 
 <script>document.documentElement.className=document.documentElement.className.replace('no-js','js');</script>
 
-<script type="application/ld+json">{"@context":"https://schema.org","@type":["SportsTeam","EducationalOrganization"],"@id":"https://azrobotics.org/#team","name":"Absolute Zero Robotics (FTC Team 12096)","alternateName":"Absolute Zero FTC #12096","sport":"Robotics","url":"https://azrobotics.org/","logo":"https://azrobotics.org/assets/img/logo-absolute-zero.png","image":"https://azrobotics.org/assets/img/og-default.jpg","slogan":"Pushing our limits to accomplish the impossible.","foundingDate":"2016","email":"absolutezeroftc@gmail.com","areaServed":{"@type":"AdministrativeArea","name":"Northern Virginia"},"location":{"@type":"Place","address":{"@type":"PostalAddress","addressRegion":"VA","addressCountry":"US"}},"memberOf":{"@type":"Organization","name":"FIRST Tech Challenge","url":"https://www.firstinspires.org/robotics/ftc"},"parentOrganization":{"@type":"NGO","name":"Robotics for Youth","url":"https://roboticsforyouth.org/"},"sameAs":["https://www.youtube.com/channel/UCWrKwtolC-khsTPuwrAJqjw","https://www.instagram.com/absolutezeroftc/","https://www.facebook.com/absolutezerorobotics/","https://twitter.com/absolutezeroftc"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":["SportsTeam","EducationalOrganization"],"@id":"https://azrobotics.org/#team","name":"Absolute Zero Robotics (FTC Team 12096)","alternateName":"Absolute Zero FTC #12096","sport":"Robotics","url":"https://azrobotics.org/","logo":"https://azrobotics.org/assets/img/logo-absolute-zero.png","image":"https://azrobotics.org/assets/img/og-default.jpg","slogan":"A student-led FIRST Tech Challenge team in Northern Virginia, competing and running workshops since 2016.","foundingDate":"2016","email":"absolutezeroftc@gmail.com","areaServed":{"@type":"AdministrativeArea","name":"Northern Virginia"},"location":{"@type":"Place","address":{"@type":"PostalAddress","addressRegion":"VA","addressCountry":"US"}},"memberOf":{"@type":"Organization","name":"FIRST Tech Challenge","url":"https://www.firstinspires.org/robotics/ftc"},"parentOrganization":{"@type":"NGO","name":"Robotics for Youth","url":"https://roboticsforyouth.org/"},"sameAs":["https://www.youtube.com/channel/UCWrKwtolC-khsTPuwrAJqjw","https://www.instagram.com/absolutezeroftc/","https://www.facebook.com/absolutezerorobotics/","https://twitter.com/absolutezeroftc"]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://azrobotics.org/"},{"@type":"ListItem","position":2,"name":"Build and Program","item":"https://azrobotics.org/build-and-program/"}]}</script>
 </head>
 <body class="page-build">
@@ -225,47 +225,67 @@
       </div>
       <figure class="">
       <span class="frame frame--photo">
-<!-- PHOTO SLOT: An open engineering notebook spread, sketch and data visible. | target 1000x750 | drop file at assets/img/build-notebook.jpg -->
-<img src="../assets/img/build-notebook.jpg" alt="A spread from the team's engineering notebook showing a mechanism sketch beside test data." width="1000" height="750" loading="lazy" decoding="async"></span>
+<!-- PHOTO SLOT: An open engineering notebook spread, sketch and data visible. | drop file at assets/img/build-notebook.jpg -->
+<div class="slot slot--photo slot--asimg"
+       style="--slot-ratio:1000 / 750" role="img" aria-label="A spread from the team's engineering notebook showing a mechanism sketch beside test data.">
+      <span class="slot__mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 8.5A1.5 1.5 0 0 1 4.5 7h2L8 5h8l1.5 2h2A1.5 1.5 0 0 1 21 8.5v9A1.5 1.5 0 0 1 19.5 19h-15A1.5 1.5 0 0 1 3 17.5Z"/><circle cx="12" cy="13" r="3.2"/></svg></span>
+      <span class="slot__label">A spread from the team’s engineering notebook showing a mechanism sketch beside test data.</span>
+      <span class="slot__hint">An open engineering notebook spread, sketch and data visible.</span>
+    </div></span>
       <figcaption>A notebook spread from the DECODE season. The rejected concepts stay in.</figcaption>
     </figure>
     </div>
   </div>
 </section>
 
-<!-- ============================ RECORD =========================== -->
-<section class="band band--tight rule-top">
+<!-- ============================ AWARDS =========================== -->
+<section class="band band--tight rule-top" id="awards">
   <div class="wrap">
     <div class="head">
       
-      <h2>Every season, every award.</h2>
+      <h2>Awards and results</h2>
       <p>Nine competition seasons. The judged awards lean toward Connect, Control and Inspire, which is what happens when a team spends as much of its season on other people as on its own machine.</p>
     </div>
 
+    <div class="filter-bar">
+      <div class="segmented" role="tablist" aria-label="Choose a season"
+           data-filter-group="season" data-filter-target="#award-seasons">
+        <button class="segmented__btn" type="button" role="tab" data-value="decode" aria-selected="true" tabindex="0">DECODE</button><button class="segmented__btn" type="button" role="tab" data-value="powerplay" aria-selected="false" tabindex="-1">POWERPLAY</button><button class="segmented__btn" type="button" role="tab" data-value="skystone" aria-selected="false" tabindex="-1">SKYSTONE</button><button class="segmented__btn" type="button" role="tab" data-value="roverruckus" aria-selected="false" tabindex="-1">ROVER RUCKUS</button><button class="segmented__btn" type="button" role="tab" data-value="relicrecovery" aria-selected="false" tabindex="-1">RELIC RECOVERY</button>
+        <span class="visually-hidden" role="status" data-filter-live></span>
+      </div>
+    </div>
+
     <!-- AZ-REGION:record -->
-    <div class="seasons">
+    <div class="seasons" id="award-seasons">
       
-        <article class="season">
+        <article class="season" data-season="decode">
           <h3 class="season__title">
             <span>DECODE</span>
             <span class="meta nums">2025-2026</span>
           </h3>
           <p class="meta season__note">Results for this season are being compiled.</p>
-          <dl class="season__events">
-            
-              <dt>Roanoke qualifier</dt>
-              <dd><span class="meta">Record not yet published.</span></dd>
-              <dt>Moorefield qualifier, West Virginia</dt>
-              <dd><span class="meta">Record not yet published.</span></dd>
-              <dt>Virginia state championship</dt>
-              <dd><span class="meta">Record not yet published.</span></dd>
-          </dl>
+
+          
+          <div class="season__pending">
+            <p class="meta">Events this season:</p>
+            <ul class="bare season__events-plain">
+              <li>Roanoke qualifier</li><li>Moorefield qualifier, West Virginia</li><li>Virginia state championship</li>
+            </ul>
+            <div class="slot slot--file"
+       style="--slot-ratio:3 / 2" role="img" aria-label="Award list for this season">
+      <span class="slot__mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v10M8 11l4 4 4-4"/><path d="M5 19h14"/></svg></span>
+      <span class="slot__label">Award list for this season</span>
+      <span class="slot__hint">Send the awards and finishes and they appear here automatically.</span>
+    </div>
+          </div>
         </article>
-        <article class="season">
+        <article class="season" data-season="powerplay">
           <h3 class="season__title">
             <span>POWERPLAY</span>
             <span class="meta nums">2022-2023</span>
           </h3>
+          
+
           
           <dl class="season__events">
             
@@ -279,11 +299,13 @@
               <dd><ul class="bare"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Connect Award, 3rd place</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Promote Award, 3rd place</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Violet Division winning alliance, second team selected</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Finalist alliance, second team selected</span></li></ul></dd>
           </dl>
         </article>
-        <article class="season">
+        <article class="season" data-season="skystone">
           <h3 class="season__title">
             <span>SKYSTONE</span>
             <span class="meta nums">2019-2020</span>
           </h3>
+          
+
           
           <dl class="season__events">
             
@@ -294,16 +316,18 @@
               <dt>DC qualifier, Maryland</dt>
               <dd><ul class="bare"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Won the finals with Robot Uprising 14604 and Innovotics 8702</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Think Award</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Control Award, 2nd place</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Connect Award, 3rd place</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Advanced to Maryland states</span></li></ul></dd>
               <dt>Virginia state championship</dt>
-              <dd><span class="meta">Record not yet published.</span></dd>
+              <dd><span class="meta">No award record for this event.</span></dd>
               <dt>Maryland state championship</dt>
               <dd><ul class="bare"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Second state appearance of the season</span></li></ul></dd>
           </dl>
         </article>
-        <article class="season">
+        <article class="season" data-season="roverruckus">
           <h3 class="season__title">
             <span>ROVER RUCKUS</span>
             <span class="meta nums">2018-2019</span>
           </h3>
+          
+
           
           <dl class="season__events">
             
@@ -313,11 +337,13 @@
               <dd><ul class="bare"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>First pick of the first alliance</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Divisional finalists</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Highest score of the event, 400 points</span></li></ul></dd>
           </dl>
         </article>
-        <article class="season">
+        <article class="season" data-season="relicrecovery">
           <h3 class="season__title">
             <span>RELIC RECOVERY</span>
             <span class="meta nums">2017-2018</span>
           </h3>
+          
+
           
           <dl class="season__events">
             
@@ -331,26 +357,86 @@
         </article>
     </div>
     <!-- /AZ-REGION:record -->
-
-    <p class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>The DECODE season results are not in our archive yet. Send the award list for Roanoke, Moorefield and states and this section fills itself in.</span></p>
   </div>
 </section>
 
-<!-- ============================= PIT ============================= -->
+<!-- ==================== LAST SEASON'S ROBOT ====================== -->
+<!-- The DECODE machine. Specs and photographs are the team's to supply;
+     the slots below say exactly what goes where. -->
+<section class="band band--raised rule-top" id="decode-robot">
+  <div class="wrap">
+    <div class="head">
+      
+      <h2>The DECODE robot</h2>
+      <p>Our machine for the 2025-2026 DECODE season, and what we would change about it.</p>
+    </div>
+
+    <div class="robot-layout">
+      <div class="robot-layout__media">
+        <div class="slot slot--photo"
+       style="--slot-ratio:4 / 3" role="img" aria-label="The DECODE robot, full view">
+      <span class="slot__mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 8.5A1.5 1.5 0 0 1 4.5 7h2L8 5h8l1.5 2h2A1.5 1.5 0 0 1 21 8.5v9A1.5 1.5 0 0 1 19.5 19h-15A1.5 1.5 0 0 1 3 17.5Z"/><circle cx="12" cy="13" r="3.2"/></svg></span>
+      <span class="slot__label">The DECODE robot, full view</span>
+      <span class="slot__hint">Side or three-quarter view on the field or in the pit. Landscape.</span>
+    </div>
+        <div class="slot slot--photo"
+       style="--slot-ratio:4 / 3" role="img" aria-label="One mechanism, close up">
+      <span class="slot__mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 8.5A1.5 1.5 0 0 1 4.5 7h2L8 5h8l1.5 2h2A1.5 1.5 0 0 1 21 8.5v9A1.5 1.5 0 0 1 19.5 19h-15A1.5 1.5 0 0 1 3 17.5Z"/><circle cx="12" cy="13" r="3.2"/></svg></span>
+      <span class="slot__label">One mechanism, close up</span>
+      <span class="slot__hint">Intake, shooter or climber. The part you are proudest of.</span>
+    </div>
+      </div>
+
+      <div class="robot-layout__spec">
+        <h3>Specifications</h3>
+        <div class="slot slot--file"
+       style="--slot-ratio:3 / 2" role="img" aria-label="Drivetrain, dimensions, weight, motor and sensor counts">
+      <span class="slot__mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v10M8 11l4 4 4-4"/><path d="M5 19h14"/></svg></span>
+      <span class="slot__label">Drivetrain, dimensions, weight, motor and sensor counts</span>
+      <span class="slot__hint">From the engineering portfolio. Drops in as a spec table.</span>
+    </div>
+        <div class="slot slot--file"
+       style="--slot-ratio:3 / 2" role="img" aria-label="Autonomous routine and scoring capability">
+      <span class="slot__mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v10M8 11l4 4 4-4"/><path d="M5 19h14"/></svg></span>
+      <span class="slot__label">Autonomous routine and scoring capability</span>
+      <span class="slot__hint">What it could score, and how reliably.</span>
+    </div>
+        <div class="slot slot--file"
+       style="--slot-ratio:3 / 2" role="img" aria-label="What we would change">
+      <span class="slot__mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v10M8 11l4 4 4-4"/><path d="M5 19h14"/></svg></span>
+      <span class="slot__label">What we would change</span>
+      <span class="slot__hint">The honest retrospective. This is the part judges read twice.</span>
+    </div>
+        <p class="meta" style="margin-top:var(--space-sm)">
+          These slots fill themselves in from the engineering portfolio once it is uploaded. Nothing is invented in the meantime.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= PIT, EMBEDDED ========================= -->
 <section class="band band--open-bottom">
   <div class="wrap">
-    <div class="panel panel--accent pit-panel">
-      <div>
-        <h2>The 2026-2027 BIOBUZZ pit, modelled before it was built.</h2>
-        <p>
-          Ten feet square. Every tool, charging station and spare-parts bin placed, with a three-table layout for states. You can orbit it, zoom in and click any piece of equipment to inspect it. It is public, and other teams are welcome to copy the layout wholesale.
-        </p>
-        <div class="btn-row" style="margin-top:var(--space-md)">
-          <a class="btn btn--primary" href="https://absolutezero-pit.vercel.app" target="_blank" rel="noopener"><span>Open the pit model</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 16 16 8M9 8h7v7"/></svg></a>
-        </div>
-      </div>
-      <span class="pit-panel__glyph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="7" y="7" width="10" height="10" rx="1.5"/><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M9 1.5v2M15 1.5v2M9 20.5v2M15 20.5v2M1.5 9h2M1.5 15h2M20.5 9h2M20.5 15h2"/></svg></span>
+    <div class="head">
+      
+      <h2>The 2026-2027 BIOBUZZ pit, modelled before it was built</h2>
+      <p>Ten feet square. Every tool, charging station and spare-parts bin placed, with a three-table layout for states. Orbit it, zoom in, click any piece of equipment. Other teams are welcome to copy the layout wholesale.</p>
     </div>
+
+    <figure class="embed">
+      <div class="embed__frame" style="--embed-ratio:16 / 10">
+        <iframe src="https://absolutezero-pit.vercel.app" title="2026-2027 pit design, interactive model" loading="lazy"
+                sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <figcaption class="embed__foot">
+        <span>Drag to orbit, scroll to zoom. Built by the team, public for anyone.</span>
+        <a class="link-cta" href="https://absolutezero-pit.vercel.app" target="_blank" rel="noopener">
+          <span>Open full screen</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 16 16 8M9 8h7v7"/></svg>
+        </a>
+      </figcaption>
+    </figure>
   </div>
 </section>
 

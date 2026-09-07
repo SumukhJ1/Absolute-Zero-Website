@@ -10,7 +10,7 @@
  * nav: N10 floating-on-scroll morph, extended to a snowflake island
  * footer: Ft5 statement
  * enrichment: none (typography and photography only)
- * type: Days One, single family, single weight, by client mandate
+ * type: Segoe UI system stack, real weights, nothing downloaded
  *
  * pre-emit critique: P4 H4 E4 S4 R5 V4
  * contrast: pass, including hovered and raised surfaces
@@ -114,14 +114,24 @@
   --overlay:      var(--shade-72);
 
   /* ------------------------------------------------------------------ *
-   * 3. TYPE — Days One is the only family. One weight (400) exists, so  *
-   *    hierarchy is carried by size, colour, measure and tracking.      *
+   * 3. TYPE — Segoe UI, with a per-platform fallback chain. Nothing is  *
+   *    downloaded: every face here is already on the reader's machine,  *
+   *    which is why the page paints with no flash and no layout shift.  *
+   *    Segoe UI ships real weights, so hierarchy uses weight again      *
+   *    rather than leaning on size and colour alone.                    *
    * ------------------------------------------------------------------ */
 
-  --font-display: "Days One", "Days One Fallback", system-ui, sans-serif;
-  --font-body:    "Days One", "Days One Fallback", system-ui, sans-serif;
-  /* Swap the line above alone if body copy ever needs a lighter companion.
-     Nothing else in the system depends on the two being identical. */
+  --font-stack:
+    "Segoe UI", "Segoe UI Adjusted", -apple-system, BlinkMacSystemFont,
+    "Helvetica Neue", Roboto, "Liberation Sans", Arial, sans-serif;
+
+  --font-display: var(--font-stack);
+  --font-body:    var(--font-stack);
+
+  /* Weights. Segoe UI has these; the fallbacks all synthesise or match. */
+  --weight-regular:  400;
+  --weight-medium:   600;
+  --weight-bold:     700;
 
   --text-xs:      0.8125rem;  /* 13px  captions, meta, form help          */
   --text-sm:      0.9375rem;  /* 15px  labels, nav links, buttons         */
@@ -140,9 +150,12 @@
   --leading-body:    1.75;
   --leading-caption: 1.45;
 
-  --track-display: -0.025em;
-  --track-head:    -0.015em;
-  --track-body:     0.004em;
+  /* Days One needed body copy opened up and headings pulled in. Segoe UI
+     is already comfortable at its natural spacing, so body sits at zero
+     and only the large display sizes get optical tightening. */
+  --track-display: -0.021em;
+  --track-head:    -0.011em;
+  --track-body:     0;
   --track-label:    0.06em;
 
   --measure:       62ch;
@@ -218,6 +231,7 @@
   --z-nav:      300;
   --z-overlay:  400;
   --z-modal:    500;
+  --z-grain:    600;    /* the paper grain, above everything, inert */
 
   /* ------------------------------------------------------------------ *
    * 9. COMPONENT TOKENS                                                 *
@@ -266,29 +280,13 @@
   --lift-3: 0 24px 60px -24px oklch(17% 0.012 240 / 0.20);
 }
 
-/* Days One, self-hosted. One weight, which is all the family has.
-   Nothing is fetched from a third-party font CDN at page load. */
+/* Segoe UI on macOS renders a touch larger than on Windows at the same
+   px value. This trims it back so a line of body copy breaks in the same
+   place on both, which keeps the measure honest. */
 @font-face {
-  font-family: "Days One";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("../fonts/days-one-latin-400.woff2") format("woff2"),
-       url("../fonts/days-one-latin-400.woff") format("woff");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-                 U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
-                 U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-/* Metric-matched fallback so there is no layout shift while Days One loads.
-   Overrides derived from Days One's own vertical metrics against Arial. */
-@font-face {
-  font-family: "Days One Fallback";
-  src: local("Arial"), local("Helvetica Neue"), local("Liberation Sans"), local("Roboto");
-  size-adjust: 104%;
-  ascent-override: 92%;
-  descent-override: 24%;
-  line-gap-override: 0%;
+  font-family: "Segoe UI Adjusted";
+  src: local("Segoe UI");
+  size-adjust: 97%;
 }
 
 
@@ -351,7 +349,7 @@ body::before {
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
   font-family: var(--font-display);
-  font-weight: 400;             /* Days One has exactly one weight */
+  font-weight: var(--weight-bold);
   font-style: normal;           /* headings are always roman */
   color: var(--ink);
   line-height: var(--leading-head);
@@ -364,8 +362,8 @@ h1, h2, h3, h4, h5, h6 {
 h1 { font-size: var(--text-2xl); line-height: var(--leading-display); letter-spacing: var(--track-display); }
 h2 { font-size: var(--text-xl); }
 h3 { font-size: var(--text-lg); }
-h4 { font-size: var(--text-md); }
-h5, h6 { font-size: var(--text-base); }
+h4 { font-size: var(--text-md); font-weight: var(--weight-medium); }
+h5, h6 { font-size: var(--text-base); font-weight: var(--weight-medium); }
 
 /* --- Body ----------------------------------------------------------- */
 
@@ -395,7 +393,7 @@ p { max-width: var(--measure); }
 .meta   { color: var(--ink-3); font-size: var(--text-xs); line-height: var(--leading-caption); }
 .nums   { font-variant-numeric: tabular-nums; }
 
-strong, b { font-weight: 400; color: var(--ink); }
+strong, b { font-weight: var(--weight-medium); color: var(--ink); }
 em, i { font-style: italic; }
 
 small { font-size: var(--text-xs); }
@@ -659,6 +657,65 @@ ul.bare > li, ol.bare > li { margin-bottom: 0; }
    its own top padding than a band in the middle of a scroll. */
 .site-main > .band:first-child { padding-block-start: var(--space-2xl); }
 
+/* ==================================================================== *
+ * Away from the corporate default                                      *
+ *                                                                      *
+ * The tells of a template are evenness and centring: every band the    *
+ * same height, every heading the same distance from the same left      *
+ * edge, every rule spanning the full width. These break that up        *
+ * without touching the component library.                              *
+ * ==================================================================== */
+
+/* 1. Section rules stop short of the right edge, the way a rule drawn by
+      hand on a page stops where the hand stops. */
+.rule-top::before {
+  content: "";
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: var(--gutter);
+  /* Not 100%: the rule ends before the margin does. */
+  inline-size: min(72%, 58rem);
+  block-size: 1px;
+  background: var(--rule);
+}
+
+/* The old full-bleed border would double up with the rule above. */
+.rule-top { border-block-start: 0; }
+
+/* 2. Consecutive bands of the same tone alternate their rhythm slightly,
+      so scrolling does not feel like paging through a slide deck. */
+.band + .band:not([class*="--"]) { padding-block-start: calc(var(--space-3xl) * 0.82); }
+
+/* 3. A section heading sits a touch left of its body copy on wide
+      viewports, which is how a person lays out a page and not how a
+      12-column grid does. */
+@media (min-width: 74rem) {
+  .head:not(.head--wide) > :is(h2, h3) { margin-inline-start: calc(var(--space-sm) * -1); }
+}
+
+/* 4. The faintest paper grain over the whole page. Almost subliminal at
+      2% alpha, but it stops the large flat fills reading as vector-flat,
+      which is the single strongest "generated" cue in a dark design. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-grain);
+  pointer-events: none;
+  opacity: 0.022;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  body::after { display: none; }
+}
+
+/* Printing a grain layer wastes toner and helps nobody. */
+@media print {
+  body::after { display: none; }
+}
+
 
 /* ===== components.css ===== */
 /* components.css — nav, buttons, cards, footer, forms, chips, disclosure */
@@ -825,6 +882,7 @@ ul.bare > li, ol.bare > li { margin-bottom: 0; }
 .nav__links li { margin: 0; }
 
 .nav__link {
+  font-weight: var(--weight-medium);
   display: block;
   padding: var(--space-2xs) var(--space-xs);
   border-radius: var(--radius-pill);
@@ -978,6 +1036,7 @@ ul.bare > li, ol.bare > li { margin-bottom: 0; }
  * ==================================================================== */
 
 .btn {
+  font-weight: var(--weight-medium);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1339,7 +1398,7 @@ ul.bare > li, ol.bare > li { margin-bottom: 0; }
   margin-bottom: var(--space-xl);
   overflow-wrap: anywhere;
 }
-.site-footer__statement b { color: var(--accent); font-weight: 400; }
+.site-footer__statement b { color: var(--accent); font-weight: var(--weight-medium); }
 
 .site-footer__grid {
   display: grid;
@@ -1427,6 +1486,180 @@ ul.bare > li, ol.bare > li { margin-bottom: 0; }
 }
 .note svg { width: 16px; height: 16px; flex: 0 0 auto; margin-top: 2px; }
 
+/* ==================================================================== *
+ * Live embed                                                           *
+ *                                                                      *
+ * Our own deployments, framed in the page. The ratio box reserves the   *
+ * space before the frame loads so nothing jumps, and the caption row    *
+ * always offers a way out to the real thing.                            *
+ * ==================================================================== */
+
+.embed {
+  margin: 0;
+  display: grid;
+  gap: var(--space-2xs);
+}
+
+.embed__frame {
+  position: relative;
+  aspect-ratio: var(--embed-ratio, 16 / 10);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--paper-2);
+  /* A browser chrome hint, so a live app reads as a live app rather than
+     as a section of this page that has lost its styling. */
+  box-shadow: var(--lift-2);
+}
+
+.embed__frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  /* Both embedded apps are dark-themed, same as this site, so the frame
+     reads as continuous rather than as a white hole in the page. */
+  background: var(--paper-2);
+}
+
+.embed__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2xs) var(--space-sm);
+  color: var(--ink-3);
+  font-size: var(--text-xs);
+  line-height: var(--leading-caption);
+}
+
+.embed__foot > span { max-width: 62ch; }
+
+@media (max-width: 640px) {
+  /* A phone-width viewport inside a phone-width frame is unusable, so the
+     frame gets taller rather than narrower and the app lays itself out. */
+  .embed__frame { aspect-ratio: 3 / 4; }
+}
+
+/* ==================================================================== *
+ * Content slot                                                         *
+ *                                                                      *
+ * An honest, visible gap. Not a grey box pretending to be a photo, and  *
+ * not a stock image pretending to be this team: a labelled space that   *
+ * tells the reader what belongs here and tells the team what to upload. *
+ * ==================================================================== */
+
+.slot {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: var(--space-3xs);
+  /* Without this a long label sets an auto minimum wider than a phone
+     viewport, and the whole section scrolls sideways. */
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  aspect-ratio: var(--slot-ratio, 3 / 2);
+  padding: var(--space-md);
+  text-align: center;
+  border: 1px dashed var(--rule-strong);
+  border-radius: var(--radius-md);
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      var(--ice-06) 0 var(--space-4xs),
+      transparent var(--space-4xs) var(--space-3xs)
+    ),
+    var(--paper-2);
+  color: var(--ink-3);
+}
+
+.slot__mark {
+  display: grid;
+  place-items: center;
+  width: var(--space-lg);
+  height: var(--space-lg);
+  color: var(--ink-3);
+  opacity: 0.72;
+}
+
+.slot__mark svg { width: 100%; height: 100%; }
+
+.slot__label {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--ink-2);
+  max-width: min(34ch, 100%);
+  min-width: 0;
+}
+
+.slot__hint {
+  font-size: var(--text-xs);
+  line-height: var(--leading-caption);
+  max-width: min(40ch, 100%);
+  min-width: 0;
+}
+
+/* A file slot is a row, not a picture frame. */
+.slot--file {
+  aspect-ratio: auto;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-auto-flow: row;
+  justify-items: start;
+  align-items: center;
+  text-align: left;
+  gap: var(--space-3xs) var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+}
+
+/* mark spans both rows; label and hint stack in the second column */
+.slot--file .slot__mark  { grid-column: 1; grid-row: 1 / span 2; }
+.slot--file .slot__label { grid-column: 2; grid-row: 1; }
+.slot--file .slot__hint  { grid-column: 2; grid-row: 2; }
+
+/* With only a label the mark should not stretch across a phantom row. */
+.slot--file:not(:has(.slot__hint)) .slot__mark { grid-row: 1; }
+
+.slot--file .slot__mark { width: var(--space-md); height: var(--space-md); }
+
+/* ==================================================================== *
+ * Wordmark — a sponsor we have no artwork for yet                      *
+ *                                                                      *
+ * Set as type rather than shown as an empty frame. It reads, it is      *
+ * indexable, a screen reader says it aloud, and when the real logo      *
+ * arrives it swaps in with no layout change.                            *
+ * ==================================================================== */
+
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-sm);
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  text-align: center;
+  color: var(--ink-2);
+  text-wrap: balance;
+  transition: color var(--dur-short) var(--ease-out);
+}
+
+a:hover > .wordmark { color: var(--ink); }
+
+.supporter__kind { display: block; margin-block-start: var(--space-3xs); text-align: center; }
+
+/* A slot standing in for an <img> inherits the frame's shape, so the
+   surrounding layout is identical whether or not the photo has arrived. */
+.slot--asimg {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+
+/* Repeated slots whose subject is named beside them: mark only. */
+.slot--quiet { gap: 0; padding: var(--space-sm); }
+.slot--quiet .slot__mark { opacity: 0.5; }
+
 
 /* ===== pages.css ===== */
 /* pages.css — page-level compositions.
@@ -1492,6 +1725,61 @@ ul.bare > li, ol.bare > li { margin-bottom: 0; }
   background: var(--veil-facts);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+}
+
+/* --- the milestone ------------------------------------------------- *
+ * Ten seasons is the single fact that separates this team from a rookie
+ * one, so it is set at display size and everything else is a footnote
+ * beside it. Deliberately lopsided: an even four-up row of numbers is
+ * the house style of every corporate site on earth.
+ * ------------------------------------------------------------------- */
+
+.milestone {
+  display: grid;
+  gap: var(--space-sm) var(--space-xl);
+  padding-block: var(--space-md);
+  align-items: center;
+}
+
+@media (min-width: 52rem) {
+  .milestone { grid-template-columns: auto 1fr; gap: var(--space-2xl); }
+}
+
+.milestone__lead {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2xs);
+  margin: 0;
+}
+
+.milestone__num {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  font-size: clamp(3.5rem, 7vw + 1rem, 6rem);
+  line-height: 0.82;
+  letter-spacing: -0.04em;
+  color: var(--accent);
+}
+
+.milestone__unit {
+  font-size: var(--text-sm);
+  line-height: 1.15;
+  color: var(--ink-2);
+  text-align: left;
+}
+
+.milestone__rest {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: auto;
+  gap: var(--space-2xs) var(--space-lg);
+  margin: 0;
+}
+
+@media (min-width: 52rem) {
+  .milestone__rest { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  /* A hairline separating the headline number from its supporting cast. */
+  .milestone__rest { border-inline-start: 1px solid var(--rule); padding-inline-start: var(--space-xl); }
 }
 
 .fact-row {
@@ -2447,4 +2735,282 @@ blockquote.pull cite { font-style: normal; font-size: var(--text-xs); color: var
 }
 @media (min-width: 48rem) {
   .spec-rows dd { padding-block: var(--space-md); border-top: 1px solid var(--rule); }
+}
+
+/* ==================================================================== *
+ * Hero identity — the logo, at last                                    *
+ *                                                                      *
+ * The front page carried the team name in type only, which for a team  *
+ * with an actual mark is a strange omission. Logo and wordmark sit as   *
+ * one unit above the headline.                                          *
+ * ==================================================================== */
+
+.hero-identity {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-block-end: var(--space-md);
+}
+
+.hero-identity__logo {
+  flex: 0 0 auto;
+  display: block;
+  width: clamp(3.25rem, 6vw, 4.75rem);
+  aspect-ratio: 1;
+}
+
+.hero-identity__logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.hero-identity__text { display: grid; gap: var(--space-hair); }
+
+.hero-identity__name {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-md);
+  line-height: 1.05;
+  letter-spacing: var(--track-head);
+  color: var(--ink);
+}
+
+.hero-identity__team {
+  font-size: var(--text-xs);
+  color: var(--ink-3);
+  letter-spacing: 0.02em;
+}
+
+/* ==================================================================== *
+ * Offer grid — what we publish for other teams                         *
+ *                                                                      *
+ * Promoted from the bottom of the page. Intentionally uneven: the       *
+ * Summit spans two columns because it is the one with a date attached.  *
+ * ==================================================================== */
+
+.offer-grid {
+  display: grid;
+  gap: var(--space-sm);
+  margin-block-start: var(--space-lg);
+}
+
+@media (min-width: 46rem) {
+  .offer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .offer--wide { grid-column: 1 / -1; }
+}
+
+@media (min-width: 68rem) {
+  .offer-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .offer--wide { grid-column: 1 / -1; }
+}
+
+.offer {
+  display: grid;
+  align-content: start;
+  gap: var(--space-3xs);
+  padding: var(--space-md);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  background: var(--paper-2);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color var(--dur-short) var(--ease-out);
+}
+
+.offer:hover { border-color: var(--rule-strong); }
+
+.offer__eyebrow {
+  font-size: var(--text-xs);
+  color: var(--accent);
+  letter-spacing: 0.03em;
+}
+
+.offer h3 {
+  font-size: var(--text-lg);
+  margin: 0;
+}
+
+.offer p {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: var(--text-sm);
+  line-height: var(--leading-body);
+  max-width: 46ch;
+}
+
+.offer__more {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3xs);
+  margin-block-start: var(--space-2xs);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--ink);
+}
+
+.offer__more svg { width: 1em; height: 1em; }
+
+/* The wide card gets its text on one line beside the heading at width. */
+@media (min-width: 62rem) {
+  .offer--wide {
+    grid-template-columns: minmax(0, 22rem) minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: var(--space-xl);
+  }
+  .offer--wide .offer__eyebrow { grid-column: 1; grid-row: 1; }
+  .offer--wide h3 { grid-column: 1; grid-row: 2; }
+  .offer--wide p { grid-column: 2; grid-row: 1 / span 2; max-width: 60ch; }
+  .offer--wide .offer__more { grid-column: 3; grid-row: 1 / span 2; margin: 0; }
+}
+
+/* ==================================================================== *
+ * Record: the previous-best line under this season                     *
+ * ==================================================================== */
+
+.record-prev {
+  display: grid;
+  gap: var(--space-hair);
+  margin-block: var(--space-md);
+  padding-block-start: var(--space-sm);
+  border-block-start: 1px solid var(--rule);
+}
+
+.record-prev strong {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-md);
+  color: var(--ink);
+}
+
+.record-prev > span:last-child {
+  color: var(--ink-2);
+  font-size: var(--text-sm);
+  line-height: var(--leading-body);
+  max-width: 48ch;
+}
+
+.record-lead { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2xs); }
+
+/* ==================================================================== *
+ * Awards: a season with no published record yet                        *
+ * ==================================================================== */
+
+.season__pending { display: grid; gap: var(--space-2xs); }
+
+.season__events-plain {
+  display: grid;
+  gap: var(--space-hair);
+  color: var(--ink-2);
+  font-size: var(--text-sm);
+}
+
+.season__events-plain li { padding-inline-start: var(--space-sm); position: relative; }
+.season__events-plain li::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block-start: 0.62em;
+  width: var(--space-3xs);
+  height: 1px;
+  background: var(--rule-strong);
+}
+
+/* ==================================================================== *
+ * Robot layout — photographs left, specifications right                *
+ * ==================================================================== */
+
+.robot-layout {
+  display: grid;
+  gap: var(--space-lg);
+  margin-block-start: var(--space-lg);
+}
+
+@media (min-width: 58rem) {
+  .robot-layout { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: var(--space-2xl); }
+}
+
+.robot-layout__media { display: grid; gap: var(--space-sm); }
+
+@media (min-width: 34rem) {
+  .robot-layout__media { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 58rem) {
+  /* Back to stacked in the narrower column, so neither photo gets tiny. */
+  .robot-layout__media { grid-template-columns: 1fr; }
+}
+
+.robot-layout__spec { display: grid; gap: var(--space-2xs); align-content: start; }
+.robot-layout__spec h3 { margin-block-end: var(--space-2xs); }
+
+/* ==================================================================== *
+ * Open Access: what is live, and what is not                           *
+ *                                                                      *
+ * Two visually distinct states on purpose. A live resource is a card    *
+ * you click. Something unpublished is a dashed slot that cannot be      *
+ * clicked, so the difference is legible before you try.                 *
+ * ==================================================================== */
+
+.oa-live {
+  display: grid;
+  gap: var(--space-sm);
+  margin-block-start: var(--space-lg);
+}
+
+@media (min-width: 52rem) { .oa-live { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.oa-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  background: var(--paper-2);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color var(--dur-short) var(--ease-out);
+}
+
+.oa-card:hover { border-color: var(--accent); }
+
+.oa-card__icon {
+  display: grid;
+  place-items: center;
+  width: var(--space-lg);
+  height: var(--space-lg);
+  color: var(--accent);
+}
+.oa-card__icon svg { width: 100%; height: 100%; }
+
+.oa-card__body { display: grid; gap: var(--space-3xs); align-content: start; }
+
+.oa-card__meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2xs); }
+
+.oa-card h3 { font-size: var(--text-lg); margin: 0; }
+
+.oa-card p {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: var(--text-sm);
+  line-height: var(--leading-body);
+  max-width: 52ch;
+}
+
+.oa-card__go {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3xs);
+  margin-block-start: var(--space-2xs);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--ink);
+}
+.oa-card__go svg { width: 1em; height: 1em; }
+
+.oa-wanted {
+  display: grid;
+  gap: var(--space-2xs);
+  margin-block-start: var(--space-lg);
 }
